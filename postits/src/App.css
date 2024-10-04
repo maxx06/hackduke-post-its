@@ -28,6 +28,17 @@
   color: #61dafb;
 }
 
+.postit {
+  background-color: #f0f0f0;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

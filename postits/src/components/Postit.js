@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Postit(props){
     return (
-        <div>
+        <div className="postit">
             {props.text}
         </div>
     );

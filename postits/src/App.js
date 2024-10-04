@@ -16,7 +16,9 @@ function App() {
 
   return (
     <div>
-      {postitsArr.map((postit, index) => {postit = <Postit key={index} text={postit}/>})}
+        {postitsArr.map((postit, index) => {
+          return <Postit text={postit} />}
+        )}
         <input onChange={handleChange}></input>
         <button onClick={handleClick}>Add</button>
     </div>
