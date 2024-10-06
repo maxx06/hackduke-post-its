@@ -29,7 +29,7 @@ const PostIt = () => {
     const newText = prompt('Enter new text');
     if (!newText) return;
 
-    axios.put(`http://localhost:5001/api/postits/${id}`, { text: newText })
+    axios.patch(`http://localhost:5001/api/postits/${id}`, { text: newText })
       .then(response => {
         setPostIts(postIts.map(postIt => postIt._id === id ? response.data : postIt));
       })

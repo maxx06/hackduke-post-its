@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 router.patch('/:id', async (req, res) => {
     let {id} = req.headers
     try {
-        await PostIt.findByIdAndUpdate({_id: id}, req.body)
+        await PostIt.findByIdAndUpdate(id, {text: req.body})
         res.send({
             message: "Note updated",
             status: 1
