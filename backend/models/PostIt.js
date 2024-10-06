@@ -7,4 +7,4 @@ const postItSchema = new mongoose.Schema({
 
 const PostIt = mongoose.model('PostIt', postItSchema);
 
-module.exports = PostIt;
+module.exports = {PostIt};

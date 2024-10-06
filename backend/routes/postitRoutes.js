@@ -1,5 +1,5 @@
 const express = require('express');
-const PostIt = require('../models/PostIt');
+const { PostIt}  = require('../models/PostIt');
 const router = express.Router();
 
 // Get all Post-Its
@@ -44,10 +44,10 @@ router.put('/:id', async (req, res) => {
 // Delete a Post-It
 router.delete('/:id', async (req, res) => {
   try {
-    const postIt = await PostIt.findById(req.params.id);
+    await PostIt.findByIdAndDelete(req.params.id);
     if (!postIt) return res.status(404).json({ message: 'Post-It not found' });
 
-    await postIt.remove();
+    //await postIt.remove();
     res.json({ message: 'Post-It deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });

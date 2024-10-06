@@ -7,7 +7,7 @@ const PostIt = () => {
 
   // Fetch Post-Its from API
   useEffect(() => {
-    axios.get('http://localhost:5000/api/postits')
+    axios.get('http://localhost:5001/api/postits')
       .then(response => setPostIts(response.data))
       .catch(error => console.error(error));
   }, []);
@@ -16,7 +16,7 @@ const PostIt = () => {
   const handleAdd = () => {
     if (!text) return;
 
-    axios.post('http://localhost:5000/api/postits', { text })
+    axios.post('http://localhost:5001/api/postits', { text })
       .then(response => {
         setPostIts([...postIts, response.data]);
         setText('');
@@ -29,7 +29,7 @@ const PostIt = () => {
     const newText = prompt('Enter new text');
     if (!newText) return;
 
-    axios.put(`http://localhost:5000/api/postits/${id}`, { text: newText })
+    axios.put(`http://localhost:5001/api/postits/${id}`, { text: newText })
       .then(response => {
         setPostIts(postIts.map(postIt => postIt._id === id ? response.data : postIt));
       })
@@ -38,7 +38,7 @@ const PostIt = () => {
 
   // Handle delete Post-It
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/postits/${id}`)
+    axios.delete(`http://localhost:5001/api/postits/${id}`)
       .then(() => {
         setPostIts(postIts.filter(postIt => postIt._id !== id));
       })

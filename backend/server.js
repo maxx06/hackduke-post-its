@@ -4,7 +4,7 @@ const cors = require('cors');
 const postItRoutes = require('./routes/postitRoutes');
 
 const app = express();
-const port = 5000;
+const port = 5001;
 
 // Middleware
 app.use(cors());
