@@ -27,31 +27,37 @@ router.post('/', async (req, res) => {
 });
 
 // Update a Post-It
-router.put('/:id', async (req, res) => {
-  try {
-    const postIt = await PostIt.findById(req.params.id);
-    if (!postIt) return res.status(404).json({ message: 'Post-It not found' });
-
-    postIt.text = req.body.text || postIt.text;
-
-    const updatedPostIt = await postIt.save();
-    res.json(updatedPostIt);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+router.patch('/:id', async (req, res) => {
+    let {id} = req.headers
+    try {
+        await PostIt.findByIdAndUpdate({_id: id}, req.body)
+        res.send({
+            message: "Note updated",
+            status: 1
+        })
+    } catch (error) {
+        res.send({
+            message: error.message,
+            status: 0
+        })
+    }
 });
 
 // Delete a Post-It
 router.delete('/:id', async (req, res) => {
-  try {
-    await PostIt.findByIdAndDelete(req.params.id);
-    if (!postIt) return res.status(404).json({ message: 'Post-It not found' });
-
-    //await postIt.remove();
-    res.json({ message: 'Post-It deleted' });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+    let {id} = req.headers
+    try {
+        await PostIt.findByIdAndDelete({_id: id})
+        res.send({
+            message: "Note deleted",
+            status: 1
+        })
+    } catch (error) {
+        res.send({
+            message: error.message,
+            status: 0
+        })
+    }
 });
 
 module.exports = router;
